@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="todoMeta.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="todoMeta.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>todos</h1>
+    </header>
+    <main>
+        <div class="inputContainer">
+            <button id="downArrow" class="nakedButton" onclick="checkAllNotes()" width="10%">❯</button>
+            <form>
+            <input type="text" placeholder="What needs to be done?" id="noteInput" autocomplete="off" width="90%">
+            </form>
+        </div>
+        <div id="notes"></div>
+        <footer>
+            <span>
+                <p id="counter">0</p>
+                <p id="itemItems">items</p>
+                <p>left</p>
+            </span>
+            <button class="nakedButton"></button>
+            <button class="nakedButton"></button>
+            <button class="nakedButton"></button>
+            <button class="nakedButton"></button>
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+}
+
+body{
+    background-color: #F5F5F5;
+}
+
+header H1{
+    font-size: 100px;
+    color: #EAD7D7;
+    text-align: center;
+}
+
+/*#region RegionName*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: #E6E6E8;
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: #E6E6E8; 
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: #E6E6E8;
+} 
+/*#endregion RegionName*/
+
+main{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    background-color: #FEFEFE;
+    max-width: 550px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0px 0px 8px -2px rgba(128,116,128,1);
+}
+
+footer{
+    border-top: 2px solid #F5F5F5;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    background-color: #FEFEFE;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    height: 40px;
+}
+
+
+form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+#downArrow{
+    flex: 1fr;
+    color: #e6e6e6;
+    font-size: 22px;
+    transform: rotate(90deg);
+    background: none;
+    border: none;
+    outline: 0;
+}
+
+#noteInput{
+    font-family: inherit;
+    width: 90%;
+    height: 33px;
+    font-size: 24px;
+    color: lightgray;
+    padding: 1em;
+    border: 0px;
+    outline-width: 0;
+}
+
+#notes{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.inputContainer{
+    border-top: 2px solid #F5F5F5;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.noteContainer{
+    border-top: 2px solid #F5F5F5;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+main p{
+    font-size: 24px;
+}
+.noteText{
+    width: 90%;
+    padding: 1em;
+}
+
+.noteTextDone{
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.noteIcon{
+    flex: 1,5;
+}
+
+.deleteButton{
+    opacity: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: 400 13.3333px Arial;
+    font-size: 30px;
+    color: #cc9a9a;
+    transition: color 0.2s ease-out;
+}
+
+footer span{
+    padding: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    vertical-align: center;
+    text-align: center;
+}
+
+footer p{
+    color: #777777;
+}
