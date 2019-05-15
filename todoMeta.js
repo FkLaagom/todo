@@ -1,3 +1,5 @@
+var selectedButton = 'All';
+
 // TEXT NOTE SUBMIT
 document.querySelector('form').addEventListener('submit',function(event){
     event.preventDefault();
@@ -93,6 +95,7 @@ function checkAllNotes(){
 
 function footerClick(button){
     let element = button;
+    setAllActiveCompletedBorder(element);
     switch(element.textContent){
         case 'Clear completed': clearFinnishedNotes();
         break;
@@ -105,6 +108,16 @@ function footerClick(button){
     }
 }
 
+function setAllActiveCompletedBorder(button){
+    Array.from(document.getElementsByClassName('button1')).forEach(element => {
+        if(element.textContent != 'clearCompleted'){
+            element.style.border = '1px solid transparent';
+        }
+    })
+    let element = button;
+    element.style.border = '1px solid #EFD5D5';
+}
+
 function showCompletedNotes(){
     Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
         let father = x.parentElement;
@@ -112,8 +125,9 @@ function showCompletedNotes(){
         if(!x.checked){
             father.classList.add('hideMyAss');
         }
-        setCounter();
     })
+    setCounter();
+    
 }
 
 function showActiveNotes(){
@@ -122,7 +136,8 @@ function showActiveNotes(){
         father.classList.remove('hideMyAss');
         if(x.checked){
            father.classList.add('hideMyAss');
-        }})
+        }
+    })
 }
 
 function showAllNotes(){
