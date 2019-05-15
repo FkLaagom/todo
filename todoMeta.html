@@ -17,20 +17,20 @@
         <div class="inputContainer">
             <button id="downArrow" class="nakedButton" onclick="checkAllNotes()" width="10%">❯</button>
             <form>
-            <input type="text" placeholder="What needs to be done?" id="noteInput" autocomplete="off" width="90%">
+            <input type="text" placeholder="What needs to be done?" class="noteInput" id="noteInput" autocomplete="off" width="90%">
             </form>
         </div>
         <div id="notes"></div>
-        <footer>
-            <span>
+        <footer class="hideFooter">
+            <span id="footSpan">
                 <p id="counter">0</p>
-                <p id="itemItems">items</p>
-                <p>left</p>
+                <p id="itemItems"> items</p>
+                <p> left</p>
             </span>
-            <button class="nakedButton"></button>
-            <button class="nakedButton"></button>
-            <button class="nakedButton"></button>
-            <button class="nakedButton"></button>
+            <button id="bAll" class="button1" onclick="footerClick(this)">All</button>
+            <button id="bActive" class="button1" onclick="footerClick(this)">Active</button>
+            <button id="bCompleted" class="button1" onclick="footerClick(this)">Completed</button>
+            <button id="bClearCompleted" class="button1 hideMyViss" onclick="footerClick(this)">Clear completed</button>
         </footer>
     </main>
 </body>

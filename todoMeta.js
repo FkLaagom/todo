@@ -1,4 +1,3 @@
-
 // TEXT NOTE SUBMIT
 document.querySelector('form').addEventListener('submit',function(event){
     event.preventDefault();
@@ -18,9 +17,9 @@ document.querySelector('form').addEventListener('submit',function(event){
                 noteChecked(this);
             });
 
-        let note = document.createElement('P');
-            note.innerHTML = noteText;
-            note.classList.add('noteText');
+        let note = document.createElement('input');
+            note.value = noteText;
+            note.classList.add('addedNote');
             note.ondblclick = function(){editNote(this)}
         
         let deleteButton = document.createElement('BUTTON');
@@ -38,42 +37,12 @@ document.querySelector('form').addEventListener('submit',function(event){
         document.getElementById('noteInput').value ='';
         document.getElementById('notes').appendChild(noteContainer);
     }
+    setCounter();
 })
-
-function editNote(e){
-    let element = e;
-    let parrent = e.parentElement;
-    let firstChild = parrent.firstChild;
-    let lastChild = parrent.lastChild;
-    
-    firstChild.hidden = true;
-    e.remove();
-    lastChild.remove();
-    let form = document.createElement('form');
-    let input = document.createElement('input');
-    input.id = 'noteInput';
-    input.type = "text";
-    input.style.color = '#4D4D4D';
-    input.value = e.textContent;
-
-    form.onfocusout = function(){resetNote(firstChild, p, lastChild, parrent)};
-    form.onsubmit = function(){resetNote(firstChild, p, lastChild, parrent)};
-    
-    form.appendChild(input);
-    parrent.appendChild(form);
-    input.focus();
-}
-
-function resetNote(child1, child2, child3, parrent){
-    var xxx = document.createElement('H1');
-    xxx.innerHTML = 'asdasd';
-    document.querySelector('body').appendChild()
-    firstChild.hidden = false;
-    console.log('asdddd');
-}
 
 function deleteNote(note){
     note.remove();
+    setCounter();
 }
 
 function hoverInNoteDiv(deleteButton){
@@ -100,11 +69,12 @@ function noteChecked(checkbox){
            checkbox.parentElement.style.display = 'flex';
         }
     }   
+    setCounter();
 }
 
 // CHECK ALL NOTES
 function checkAllNotes(){
-    boxes = Array.from(document.getElementsByClassName('noteCheckBox'));
+   let boxes = Array.from(document.getElementsByClassName('noteCheckBox'));
     if(boxes.some(x => x.checked == false)){
         boxes.forEach(x =>{
             x.checked = true;
@@ -117,6 +87,85 @@ function checkAllNotes(){
             x.checked = false;
             noteChecked(x);
         })
+    }
+    setCounter();
+}
+
+function footerClick(button){
+    let element = button;
+    switch(element.textContent){
+        case 'Clear completed': clearFinnishedNotes();
+        break;
+        case 'All': showAllNotes();
+        break;
+        case 'Active': showActiveNotes();
+        break;
+        case 'Completed': showCompletedNotes();
+        break;
+    }
+}
+
+function showCompletedNotes(){
+    Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
+        let father = x.parentElement;
+        father.classList.remove('hideMyAss');
+        if(!x.checked){
+            father.classList.add('hideMyAss');
+        }
+        setCounter();
+    })
+}
+
+function showActiveNotes(){
+    Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
+        let father = x.parentElement;
+        father.classList.remove('hideMyAss');
+        if(x.checked){
+           father.classList.add('hideMyAss');
+        }})
+}
+
+function showAllNotes(){
+    Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
+        let father = x.parentElement;
+        father.classList.remove('hideMyAss');
+    })
+    setCounter();
+}
+
+function clearFinnishedNotes(){
+    Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
+    if(x.checked == true){
+        deleteNote(x.parentElement);
+    }})
+    setCounter();
+}
+
+function setCounter(){
+    let count = 0;
+    let checkedCount = 0;
+    let totalNotes = 0;
+    Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x => {
+        if(x.checked == false){
+            count++;
+            totalNotes++;
+        }else{
+            checkedCount++;
+            totalNotes++;
+        }
+    })
+    document.getElementById('counter').textContent = count;
+    document.getElementById('itemItems').textContent = count == 1 ? 'item':'items';
+    if(checkedCount > 0){
+        document.getElementById('bClearCompleted').classList.remove('hideMyViss');
+    }
+    else{
+        document.getElementById('bClearCompleted').classList.add('hideMyViss');
+    }
+    if(totalNotes> 0){
+        document.querySelector('footer').classList.remove('hideFooter');
+    }else{
+        document.querySelector('footer').classList.add('hideFooter');
     }
 }
 

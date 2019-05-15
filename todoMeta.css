@@ -44,7 +44,8 @@ main{
 footer{
     border-top: 2px solid #F5F5F5;
     display: flex;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     background-color: #FEFEFE;
     width: 100%;
@@ -70,8 +71,17 @@ form{
     border: none;
     outline: 0;
 }
-
-#noteInput{
+.addedNote{
+    font-family: inherit;
+    width: 90%;
+    height: 33px;
+    font-size: 24px;
+    color: #4D4D4D;
+    padding: 1em;
+    border: 0px;
+    outline-width: 0;
+}
+.noteInput{
     font-family: inherit;
     width: 90%;
     height: 33px;
@@ -136,17 +146,62 @@ main p{
     transition: color 0.2s ease-out;
 }
 
+
 footer span{
-    padding: 1em;
-    padding-bottom: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    padding-left: 1em;
+    display: flex; 
     align-content: center;
-    vertical-align: center;
-    text-align: center;
+    height: 16px;
+    margin-bottom: 5px;
+width: 30%;
 }
 
 footer p{
+    display: inline;
     color: #777777;
+    font-size: 16px;
+    padding: 1px;
+    padding-top: auto;
+}
+
+.hideMyAss{
+    display: none;
+}
+
+.hideMyViss{
+    visibility: hidden;
+}
+
+.button1:hover{
+    border: 1px solid #EFD5D5
+}
+
+.button1{
+    background: none;
+    font-size: 16px;
+    color: #777777;
+    font: inherit;
+    padding: 0 0.5em;
+    margin: 6px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.hideFooter{
+    visibility: hidden;
+    display: none;
+}
+
+.button1Border{
+    border: 1px solid #EFD5D5;
+}
+
+#bClearCompleted{
+    white-space: normal;
+    margin-left: auto;
+}
+#bClearCompleted:hover{
+    text-decoration: underline;
+    border: 1px solid transparent;
 }
