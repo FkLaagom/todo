@@ -40,6 +40,7 @@ document.querySelector('form').addEventListener('submit',function(event){
         document.getElementById('notes').appendChild(noteContainer);
     }
     setCounter();
+    checkActiveBottomButton();
 })
 
 function deleteNote(note){
@@ -92,6 +93,15 @@ function checkAllNotes(){
         })
     }
     setCounter();
+}
+
+function checkActiveBottomButton(){
+    let asd = Array.from(document.getElementsByClassName('button1'));
+    Array.from(document.getElementsByClassName('button1')).forEach(x =>{
+        if(x.classList.contains('button1Selected')){
+            footerClick(x);
+        }
+    })
 }
 
 function footerClick(button){

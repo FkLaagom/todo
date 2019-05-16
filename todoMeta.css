@@ -186,10 +186,14 @@ footer p{
 }
 
 .button1:hover{
-    border: 1px solid #F7EAEA
+    border: 1px solid #F7EAEA;
 }
 
 .button1Selected{
+    border: 1px solid #EFD5D5;
+}
+
+.button1Selected:hover{
     border: 1px solid #EFD5D5;
 }
 
