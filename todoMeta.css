@@ -172,9 +172,6 @@ footer p{
     visibility: hidden;
 }
 
-.button1:hover{
-    border: 1px solid #EFD5D5
-}
 
 .button1{
     background: none;
@@ -186,6 +183,14 @@ footer p{
     border-radius: 6px;
     border: 1px solid transparent;
     outline: none;
+}
+
+.button1:hover{
+    border: 1px solid #F7EAEA
+}
+
+.button1Selected{
+    border: 1px solid #EFD5D5;
 }
 
 .hideFooter{

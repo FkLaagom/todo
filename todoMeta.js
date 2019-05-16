@@ -3,7 +3,7 @@ var selectedButton = 'All';
 // TEXT NOTE SUBMIT
 document.querySelector('form').addEventListener('submit',function(event){
     event.preventDefault();
-    var noteText = document.getElementById('noteInput').value;
+    let noteText = document.getElementById('noteInput').value;
     if(noteText != ''){
         let noteContainer = document.createElement('div');
             noteContainer.classList.add('noteContainer');
@@ -53,6 +53,7 @@ deleteButton.style.opacity = 100;
 function hoverOutNoteDiv(deleteButton){
     deleteButton.style.opacity = 0;
 }
+
 
 
 // NOTE CHECKED
@@ -111,11 +112,12 @@ function footerClick(button){
 function setAllActiveCompletedBorder(button){
     Array.from(document.getElementsByClassName('button1')).forEach(element => {
         if(element.textContent != 'clearCompleted'){
-            element.style.border = '1px solid transparent';
+            element.classList.remove('button1Selected');
+            element.classList.add('button1')
         }
     })
-    let element = button;
-    element.style.border = '1px solid #EFD5D5';
+    let but = button;
+    button.classList.add('button1Selected');
 }
 
 function showCompletedNotes(){
