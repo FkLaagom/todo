@@ -1,4 +1,12 @@
-var selectedButton = 'All';
+
+
+if(window.localStorage.getItem("notes") != null){
+   let notes= JSON.parse(window.localStorage.getItem('notes'));
+   notes.forEach(x =>{
+       document.getElementById('notes').appendChild(x);
+   })
+}
+
 
 // TEXT NOTE SUBMIT
 document.querySelector('form').addEventListener('submit',function(event){
@@ -41,7 +49,17 @@ document.querySelector('form').addEventListener('submit',function(event){
     }
     setCounter();
     checkActiveBottomButton();
+    saveLocalSiteDump();
 })
+
+function saveLocalSiteDump(){
+    window.localStorage.setItem('body', document.documentElement.innerHTML);
+    let notes = [];
+    Array.from(document.getElementsByClassName('noteContainer')).forEach(x =>{
+         notes.push(x);
+    })
+    window.localStorage.setItem('notes', JSON.stringify(notes));
+}
 
 function deleteNote(note){
     note.remove();
@@ -61,17 +79,9 @@ function hoverOutNoteDiv(deleteButton){
 function noteChecked(checkbox){
     if(checkbox.checked == true){
         checkbox.nextSibling.classList.add('noteTextDone');
-        //if only show visable notes
-        if(1 == 2 ){
-           checkbox.parentElement.style.display = 'none';
-        }
     }
     else{
         checkbox.nextSibling.classList.remove('noteTextDone');
-        //if only show visable notes    
-        if(1 == 2 ){
-           checkbox.parentElement.style.display = 'flex';
-        }
     }   
     setCounter();
 }
@@ -131,6 +141,7 @@ function setAllActiveCompletedBorder(button){
 }
 
 function showCompletedNotes(){
+    location.hash = 'Completed';
     Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
         let father = x.parentElement;
         father.classList.remove('hideMyAss');
@@ -143,6 +154,7 @@ function showCompletedNotes(){
 }
 
 function showActiveNotes(){
+    location.hash ='Active';
     Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
         let father = x.parentElement;
         father.classList.remove('hideMyAss');
@@ -153,6 +165,7 @@ function showActiveNotes(){
 }
 
 function showAllNotes(){
+    location.hash = 'All';
     Array.from(document.getElementsByClassName('noteCheckBox')).forEach(x =>{
         let father = x.parentElement;
         father.classList.remove('hideMyAss');
