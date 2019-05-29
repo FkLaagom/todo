@@ -2,7 +2,7 @@ window.onbeforeunload = () =>{
         let notes = [];
         let checkbox = Array.from(document.getElementsByClassName('noteCheckBox'));
         Array.from(document.getElementsByClassName('noteInput')).forEach((x,i) =>{
-            notes.push({'text': x.value, checked: });
+            notes.push({'text': x.value, checked: checkbox[i].checked});
         })
 
 
@@ -10,11 +10,13 @@ window.onbeforeunload = () =>{
         window.localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-if(window.localStorage.getItem("notes") != null){
-   let notes= JSON.parse(window.localStorage.getItem('notes'));
-   notes.forEach(x =>{
-       document.getElementById('notes').appendChild(x);
-   })
+window.onload = () => {
+    if(window.localStorage.getItem("notes") != null){
+       let notes= JSON.parse(window.localStorage.getItem('notes'));
+       notes.forEach(x =>{
+           document.getElementById('notes').appendChild(x);
+       })
+    }
 }
 
 
