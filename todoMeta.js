@@ -1,4 +1,14 @@
+window.onbeforeunload = () =>{
+        let notes = [];
+        let checkbox = Array.from(document.getElementsByClassName('noteCheckBox'));
+        Array.from(document.getElementsByClassName('noteInput')).forEach((x,i) =>{
+            notes.push({'text': x.value, checked: });
+        })
 
+
+
+        window.localStorage.setItem('notes', JSON.stringify(notes));
+}
 
 if(window.localStorage.getItem("notes") != null){
    let notes= JSON.parse(window.localStorage.getItem('notes'));
@@ -52,14 +62,7 @@ document.querySelector('form').addEventListener('submit',function(event){
     saveLocalSiteDump();
 })
 
-function saveLocalSiteDump(){
-    window.localStorage.setItem('body', document.documentElement.innerHTML);
-    let notes = [];
-    Array.from(document.getElementsByClassName('noteContainer')).forEach(x =>{
-         notes.push(x);
-    })
-    window.localStorage.setItem('notes', JSON.stringify(notes));
-}
+
 
 function deleteNote(note){
     note.remove();
